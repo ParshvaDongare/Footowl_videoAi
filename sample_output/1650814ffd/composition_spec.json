@@ -1,0 +1,42 @@
+{
+  "title": "Cinematic Emotional Highlight Reel",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "duration_seconds": 18.0,
+  "scenes": [
+    {
+      "scene_id": "scene_1",
+      "image_id": "demo_2",
+      "duration_seconds": 6.0,
+      "caption": "The story 1: demo_2: scene, warm, outdoor, no strong object cue",
+      "transition": "fade",
+      "animation": "slow-zoom",
+      "timing": "opening",
+      "start_seconds": 0.0
+    },
+    {
+      "scene_id": "scene_2",
+      "image_id": "demo_1",
+      "duration_seconds": 6.0,
+      "caption": "Moments 2: demo_1: scene, warm, indoor, no strong object cue",
+      "transition": "fade",
+      "animation": "subtle-pan",
+      "timing": "mid",
+      "start_seconds": 6.0
+    },
+    {
+      "scene_id": "scene_3",
+      "image_id": "demo_4",
+      "duration_seconds": 6.0,
+      "caption": "Moments 3: demo_4: scene, joyful, outdoor, no strong object cue",
+      "transition": "fade",
+      "animation": "subtle-pan",
+      "timing": "ending",
+      "start_seconds": 12.0
+    }
+  ],
+  "render_notes": [
+    "Generated from validated CompositionSpec."
+  ]
+}

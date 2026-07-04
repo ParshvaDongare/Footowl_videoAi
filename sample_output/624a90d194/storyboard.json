@@ -1,0 +1,41 @@
+{
+  "title": "Cinematic Emotional Highlight Reel",
+  "logline": "Cinematic Emotional reel with soft and expressive captions.",
+  "tone": "soft and expressive",
+  "scenes": [
+    {
+      "scene_id": "scene_1",
+      "image_id": "demo_2",
+      "duration_seconds": 6.0,
+      "caption": "The story 1: demo_2: scene, warm, outdoor, no strong object cue",
+      "transition": "fade",
+      "animation": "slow-zoom",
+      "timing": "opening",
+      "rationale": "Selected for demo_2: scene, warm, outdoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+    },
+    {
+      "scene_id": "scene_2",
+      "image_id": "demo_1",
+      "duration_seconds": 6.0,
+      "caption": "Moments 2: demo_1: scene, warm, indoor, no strong object cue",
+      "transition": "fade",
+      "animation": "subtle-pan",
+      "timing": "mid",
+      "rationale": "Selected for demo_1: scene, warm, indoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+    },
+    {
+      "scene_id": "scene_3",
+      "image_id": "demo_4",
+      "duration_seconds": 6.0,
+      "caption": "Moments 3: demo_4: scene, joyful, outdoor, no strong object cue",
+      "transition": "fade",
+      "animation": "subtle-pan",
+      "timing": "ending",
+      "rationale": "Selected for demo_4: scene, joyful, outdoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+    }
+  ],
+  "notes": [
+    "Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats.",
+    "Selected 3 scenes from 3 candidate images."
+  ]
+}

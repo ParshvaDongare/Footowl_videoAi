@@ -1,0 +1,32 @@
+{
+  "title": "Cinematic Emotional Highlight Reel",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "duration_seconds": 12.0,
+  "scenes": [
+    {
+      "scene_id": "scene_1",
+      "image_id": "demo_2",
+      "duration_seconds": 6.0,
+      "caption": "A warm beginning",
+      "transition": "fade",
+      "animation": "slow-zoom",
+      "timing": "opening",
+      "start_seconds": 0.0
+    },
+    {
+      "scene_id": "scene_2",
+      "image_id": "demo_1",
+      "duration_seconds": 6.0,
+      "caption": "Quiet joy",
+      "transition": "fade",
+      "animation": "subtle-pan",
+      "timing": "ending",
+      "start_seconds": 6.0
+    }
+  ],
+  "render_notes": [
+    "Generated from validated CompositionSpec."
+  ]
+}

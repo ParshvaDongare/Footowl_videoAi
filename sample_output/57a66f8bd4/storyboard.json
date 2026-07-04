@@ -1,0 +1,31 @@
+{
+  "title": "Cinematic Emotional Highlight Reel",
+  "logline": "Cinematic Emotional reel with soft and expressive captions.",
+  "tone": "soft and expressive",
+  "scenes": [
+    {
+      "scene_id": "scene_1",
+      "image_id": "demo_2",
+      "duration_seconds": 6.0,
+      "caption": "A warm beginning",
+      "transition": "fade",
+      "animation": "slow-zoom",
+      "timing": "opening",
+      "rationale": "Selected for demo_2: scene, warm, outdoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+    },
+    {
+      "scene_id": "scene_2",
+      "image_id": "demo_1",
+      "duration_seconds": 6.0,
+      "caption": "Quiet joy",
+      "transition": "fade",
+      "animation": "subtle-pan",
+      "timing": "ending",
+      "rationale": "Selected for demo_1: scene, warm, indoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+    }
+  ],
+  "notes": [
+    "Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats.",
+    "Selected 2 scenes from 2 candidate images."
+  ]
+}

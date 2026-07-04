@@ -1,0 +1,292 @@
+{
+  "run_id": "57a66f8bd4",
+  "current_node": "Renderer",
+  "source_type": "local_folder",
+  "source_ref": "D:\\Footowl\\sample_input\\demo_images",
+  "user_prompt": "Cinematic wedding reel, slow and emotional, warm tones, minimal text",
+  "video_intent": {
+    "pacing": "slow",
+    "visual_style": "cinematic emotional",
+    "caption_tone": "soft and expressive",
+    "transition_preference": "gentle fades",
+    "color_treatment": "warm",
+    "target_duration_seconds": 30,
+    "must_include": [],
+    "must_avoid": []
+  },
+  "images": [
+    {
+      "image_id": "demo_1",
+      "path": "D:\\Footowl\\sample_input\\demo_images\\demo_1.png",
+      "width": 960,
+      "height": 540,
+      "file_size": 4289
+    },
+    {
+      "image_id": "demo_2",
+      "path": "D:\\Footowl\\sample_input\\demo_images\\demo_2.png",
+      "width": 960,
+      "height": 540,
+      "file_size": 4426
+    },
+    {
+      "image_id": "demo_3",
+      "path": "D:\\Footowl\\sample_input\\demo_images\\demo_3.png",
+      "width": 960,
+      "height": 540,
+      "file_size": 4446
+    },
+    {
+      "image_id": "demo_4",
+      "path": "D:\\Footowl\\sample_input\\demo_images\\demo_4.png",
+      "width": 960,
+      "height": 540,
+      "file_size": 4479
+    }
+  ],
+  "image_analysis": [
+    {
+      "image_id": "demo_1",
+      "image_summary": "demo_1: scene, warm, indoor, no strong object cue",
+      "perceptual_hash": "ff818181818181ff",
+      "people": 0,
+      "objects": [],
+      "emotion": "warm",
+      "blur_score": 456.4703549382716,
+      "quality_score": 0.7460308823529411,
+      "indoor_outdoor": "indoor",
+      "aesthetic_score": 0.7896056077523601,
+      "duplicate_score": 0.01,
+      "confidence": 0.8271667372458242,
+      "rank_score": 0.8219455582107843
+    },
+    {
+      "image_id": "demo_2",
+      "image_summary": "demo_2: scene, warm, outdoor, no strong object cue",
+      "perceptual_hash": "ff818181818181ff",
+      "people": 0,
+      "objects": [],
+      "emotion": "warm",
+      "blur_score": 388.4889776234568,
+      "quality_score": 0.7583552173826706,
+      "indoor_outdoor": "outdoor",
+      "aesthetic_score": 0.8371133578431373,
+      "duplicate_score": 0.03,
+      "confidence": 0.8323823792608479,
+      "rank_score": 0.829423630208617
+    },
+    {
+      "image_id": "demo_3",
+      "image_summary": "demo_3: scene, warm, outdoor, no strong object cue",
+      "perceptual_hash": "ff818181818181ff",
+      "people": 0,
+      "objects": [],
+      "emotion": "warm",
+      "blur_score": 291.3673225308642,
+      "quality_score": 0.6367393385189725,
+      "indoor_outdoor": "outdoor",
+      "aesthetic_score": 0.7576649456850642,
+      "duplicate_score": 0.05,
+      "confidence": 0.7981143622723009,
+      "rank_score": 0.7075815386227986
+    },
+    {
+      "image_id": "demo_4",
+      "image_summary": "demo_4: scene, joyful, outdoor, no strong object cue",
+      "perceptual_hash": "ff818181818181ff",
+      "people": 0,
+      "objects": [],
+      "emotion": "joyful",
+      "blur_score": 160.7191049382716,
+      "quality_score": 0.5556997568687969,
+      "indoor_outdoor": "outdoor",
+      "aesthetic_score": 0.7709551258775116,
+      "duplicate_score": 0.07,
+      "confidence": 0.7812354639615106,
+      "rank_score": 0.6098403416348948
+    }
+  ],
+  "selected_images": [
+    {
+      "image_id": "demo_2",
+      "image_summary": "demo_2: scene, warm, outdoor, no strong object cue",
+      "perceptual_hash": "ff818181818181ff",
+      "people": 0,
+      "objects": [],
+      "emotion": "warm",
+      "blur_score": 388.4889776234568,
+      "quality_score": 0.7583552173826706,
+      "indoor_outdoor": "outdoor",
+      "aesthetic_score": 0.8371133578431373,
+      "duplicate_score": 0.03,
+      "confidence": 0.8323823792608479,
+      "rank_score": 0.829423630208617
+    },
+    {
+      "image_id": "demo_1",
+      "image_summary": "demo_1: scene, warm, indoor, no strong object cue",
+      "perceptual_hash": "ff818181818181ff",
+      "people": 0,
+      "objects": [],
+      "emotion": "warm",
+      "blur_score": 456.4703549382716,
+      "quality_score": 0.7460308823529411,
+      "indoor_outdoor": "indoor",
+      "aesthetic_score": 0.7896056077523601,
+      "duplicate_score": 0.01,
+      "confidence": 0.8271667372458242,
+      "rank_score": 0.8219455582107843
+    }
+  ],
+  "retrieval_context": {
+    "style_guides": [
+      {
+        "collection": "style_guides",
+        "doc_id": "cinematic",
+        "text": "Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats.",
+        "metadata": {
+          "type": "style"
+        },
+        "score": 0.34299717028501764
+      },
+      {
+        "collection": "style_guides",
+        "doc_id": "upbeat",
+        "text": "Upbeat style: fast pacing, punchy captions, energetic cuts, quick transitions, higher text density, and vivid color treatment.",
+        "metadata": {
+          "type": "style"
+        },
+        "score": 0.0
+      },
+      {
+        "collection": "style_guides",
+        "doc_id": "corporate",
+        "text": "Corporate style: clean pacing, restrained transitions, concise captions, subtle motion, balanced composition, and polished neutral color treatment.",
+        "metadata": {
+          "type": "style"
+        },
+        "score": 0.0
+      }
+    ],
+    "remotion": [
+      {
+        "collection": "remotion_transition",
+        "doc_id": "fade",
+        "text": "Fade transitions reduce opacity from one scene to the next and are safe for all reel styles.",
+        "metadata": {
+          "type": "remotion"
+        },
+        "score": 0.12126781251816648
+      },
+      {
+        "collection": "remotion_components",
+        "doc_id": "absolute-fill",
+        "text": "AbsoluteFill is the base container for each frame and supports inline style objects.",
+        "metadata": {
+          "type": "remotion"
+        },
+        "score": 0.0
+      },
+      {
+        "collection": "remotion_components",
+        "doc_id": "img-component",
+        "text": "Img renders images by providing a src prop with a local or remote asset path.",
+        "metadata": {
+          "type": "remotion"
+        },
+        "score": 0.0
+      }
+    ]
+  },
+  "storyboard": {
+    "title": "Cinematic Emotional Highlight Reel",
+    "logline": "Cinematic Emotional reel with soft and expressive captions.",
+    "tone": "soft and expressive",
+    "scenes": [
+      {
+        "scene_id": "scene_1",
+        "image_id": "demo_2",
+        "duration_seconds": 6.0,
+        "caption": "A warm beginning",
+        "transition": "fade",
+        "animation": "slow-zoom",
+        "timing": "opening",
+        "rationale": "Selected for demo_2: scene, warm, outdoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+      },
+      {
+        "scene_id": "scene_2",
+        "image_id": "demo_1",
+        "duration_seconds": 6.0,
+        "caption": "Quiet joy",
+        "transition": "fade",
+        "animation": "subtle-pan",
+        "timing": "ending",
+        "rationale": "Selected for demo_1: scene, warm, indoor, no strong object cue and Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats."
+      }
+    ],
+    "notes": [
+      "Cinematic style: slower pacing, warm contrast, soft fades, emotional captions, gentle motion, and longer opening/closing beats.",
+      "Selected 2 scenes from 2 candidate images."
+    ]
+  },
+  "composition_spec": {
+    "title": "Cinematic Emotional Highlight Reel",
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "duration_seconds": 12.0,
+    "scenes": [
+      {
+        "scene_id": "scene_1",
+        "image_id": "demo_2",
+        "duration_seconds": 6.0,
+        "caption": "A warm beginning",
+        "transition": "fade",
+        "animation": "slow-zoom",
+        "timing": "opening",
+        "start_seconds": 0.0
+      },
+      {
+        "scene_id": "scene_2",
+        "image_id": "demo_1",
+        "duration_seconds": 6.0,
+        "caption": "Quiet joy",
+        "transition": "fade",
+        "animation": "subtle-pan",
+        "timing": "ending",
+        "start_seconds": 6.0
+      }
+    ],
+    "render_notes": [
+      "Generated from validated CompositionSpec."
+    ]
+  },
+  "validation_result": {
+    "is_valid": true,
+    "errors": [],
+    "warnings": []
+  },
+  "remotion_code": "import React from 'react';\nimport {AbsoluteFill, Img, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';\n\nconst scenes = [\n  { id: 'scene_1', imageId: 'demo_2', start: 0.00, duration: 6.00, caption: 'A warm beginning', transition: 'fade', animation: 'slow-zoom' },\n  { id: 'scene_2', imageId: 'demo_1', start: 6.00, duration: 6.00, caption: 'Quiet joy', transition: 'fade', animation: 'subtle-pan' },\n];\n\nexport const Composition: React.FC = () => {\n  const frame = useCurrentFrame();\n  const {fps, width, height} = useVideoConfig();\n  const active = scenes.find((scene) => frame >= scene.start * fps && frame < (scene.start + scene.duration) * fps) ?? scenes[0];\n  return (\n    <AbsoluteFill style={{backgroundColor: '#0b0d10', justifyContent: 'center', alignItems: 'center'}}>\n      <AbsoluteFill style={{opacity: 0.92}}>\n        {active && (\n          <Img src={`/assets/${active.imageId}.png`} style={{width: '100%', height: '100%', objectFit: 'cover'}} />\n        )}\n      </AbsoluteFill>\n      <AbsoluteFill style={{justifyContent: 'flex-end', padding: 56, color: 'white'}}>\n        <div style={{fontSize: 40, fontWeight: 700, marginBottom: 12}}>{active?.caption}</div>\n        <div style={{fontSize: 20, opacity: 0.85}}>fps {fps} · {width}x{height}</div>\n      </AbsoluteFill>\n    </AbsoluteFill>\n  );\n};\n",
+  "compile_errors": [],
+  "compile_attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "diagnostics": []
+    }
+  ],
+  "retry_count": 0,
+  "status": "succeeded",
+  "output_video": "D:\\Footowl\\sample_output\\57a66f8bd4\\output.mp4",
+  "artifact_paths": {
+    "run_dir": "D:\\Footowl\\sample_output\\57a66f8bd4",
+    "storyboard_json": "D:\\Footowl\\sample_output\\57a66f8bd4\\storyboard.json",
+    "composition_spec_json": "D:\\Footowl\\sample_output\\57a66f8bd4\\composition_spec.json",
+    "tsx_script": "D:\\Footowl\\sample_output\\57a66f8bd4\\Composition.tsx",
+    "compile_attempts_json": "D:\\Footowl\\sample_output\\57a66f8bd4\\compile_attempts.json",
+    "pipeline_state_json": null,
+    "graph_trace_json": null,
+    "output_video": null
+  },
+  "created_at": "2026-07-04T11:22:32.422321+00:00"
+}

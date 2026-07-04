@@ -1,0 +1,109 @@
+[
+  {
+    "ts": "2026-07-04T10:48:38.307127+00:00",
+    "run_id": "624a90d194",
+    "node": "Image Analyser",
+    "event": "start",
+    "node_input": {
+      "prompt": "Cinematic wedding reel, slow and emotional, warm tones, minimal text",
+      "image_count": 4
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610054+00:00",
+    "run_id": "624a90d194",
+    "node": "Image Analyser",
+    "event": "end",
+    "node_output": {
+      "analysed": 4,
+      "selected": [
+        "demo_2",
+        "demo_1",
+        "demo_4"
+      ]
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610128+00:00",
+    "run_id": "624a90d194",
+    "node": "Storyboard Writer",
+    "event": "start",
+    "node_input": {
+      "intent": {
+        "pacing": "slow",
+        "visual_style": "cinematic emotional",
+        "caption_tone": "soft and expressive",
+        "transition_preference": "gentle fades",
+        "color_treatment": "warm",
+        "target_duration_seconds": 30,
+        "must_include": [],
+        "must_avoid": []
+      }
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610477+00:00",
+    "run_id": "624a90d194",
+    "node": "Storyboard Writer",
+    "event": "end",
+    "node_output": {
+      "scenes": 3,
+      "duration": 18.0
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610494+00:00",
+    "run_id": "624a90d194",
+    "node": "Script Generator",
+    "event": "start",
+    "node_input": {
+      "scenes": 3
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610691+00:00",
+    "run_id": "624a90d194",
+    "node": "Script Generator",
+    "event": "end",
+    "node_output": {
+      "tsx_length": 1613,
+      "retrieved": 3
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610704+00:00",
+    "run_id": "624a90d194",
+    "node": "Compiler & Fixer",
+    "event": "start",
+    "node_input": {
+      "retry_count": 0
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610940+00:00",
+    "run_id": "624a90d194",
+    "node": "Compiler & Fixer",
+    "event": "end",
+    "node_output": {
+      "ok": true
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:39.610956+00:00",
+    "run_id": "624a90d194",
+    "node": "Renderer",
+    "event": "start",
+    "node_input": {
+      "scenes": 3
+    }
+  },
+  {
+    "ts": "2026-07-04T10:48:44.578056+00:00",
+    "run_id": "624a90d194",
+    "node": "Renderer",
+    "event": "end",
+    "node_output": {
+      "output_video": "D:\\Footowl\\sample_output\\624a90d194\\output.mp4"
+    }
+  }
+]

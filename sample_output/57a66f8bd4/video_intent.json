@@ -1,0 +1,10 @@
+{
+  "pacing": "slow",
+  "visual_style": "cinematic emotional",
+  "caption_tone": "soft and expressive",
+  "transition_preference": "gentle fades",
+  "color_treatment": "warm",
+  "target_duration_seconds": 30,
+  "must_include": [],
+  "must_avoid": []
+}

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frame samples (debug artifacts)
+_frame_samples/
+_frame_samples2/
+_eventcheck/
+_eventcheck2/
+
+# Local output runs (keep only sample_output)
+output/
+
+# Byte-compiled
+*.pyc
