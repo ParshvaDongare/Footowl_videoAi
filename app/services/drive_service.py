@@ -12,7 +12,7 @@ import urllib.request
 from app.utils import ensure_dir
 
 
-IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".bmp"}
+MEDIA_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".mp4", ".mov", ".avi", ".mkv", ".webm"}
 
 
 @dataclass
@@ -81,7 +81,7 @@ class GoogleDriveFolderDownloader:
             dest = folder_dir / filename
         else:
             dest = folder_dir / f"{file_id}.bin"
-        if dest.suffix.lower() not in IMAGE_EXTS and not self._looks_like_image(filename or dest.name):
+        if dest.suffix.lower() not in MEDIA_EXTS and not self._looks_like_media(filename or dest.name):
             return
         dest.write_bytes(content)
 
@@ -111,5 +111,5 @@ class GoogleDriveFolderDownloader:
             return os.path.basename(name)
         return None
 
-    def _looks_like_image(self, name: str) -> bool:
-        return Path(name).suffix.lower() in IMAGE_EXTS
+    def _looks_like_media(self, name: str) -> bool:
+        return Path(name).suffix.lower() in MEDIA_EXTS

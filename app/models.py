@@ -57,6 +57,23 @@ class ImageAnalysis(BaseModel):
     rank_score: float
 
 
+class VisionSemanticAnalysis(BaseModel):
+    image_id: str
+    image_summary: str
+    people: int
+    objects: list[str] = Field(default_factory=list)
+    event_type: str = "general"
+    emotion: str
+    indoor_outdoor: str
+    aesthetic_score: float
+    duplicate_score: float
+    confidence: float
+
+
+class VisionBatchResult(BaseModel):
+    analyses: list[VisionSemanticAnalysis] = Field(default_factory=list)
+
+
 class ScenePlan(BaseModel):
     scene_id: str
     image_id: str
@@ -97,6 +114,16 @@ class CompositionSpec(BaseModel):
     render_notes: list[str] = Field(default_factory=list)
 
 
+class ScriptGenerationResult(BaseModel):
+    tsx_code: str
+    notes: list[str] = Field(default_factory=list)
+
+
+class JudgeAssessment(BaseModel):
+    coherence_score: float
+    notes: list[str] = Field(default_factory=list)
+
+
 class ValidationResult(BaseModel):
     is_valid: bool
     errors: list[str] = Field(default_factory=list)
@@ -128,6 +155,9 @@ class PipelineState(BaseModel):
     source_type: SourceType
     source_ref: str
     user_prompt: str
+    video_width: int = 1280
+    video_height: int = 720
+    video_fps: int = 24
     video_intent: VideoIntent | None = None
     images: list[ImageRecord] = Field(default_factory=list)
     image_analysis: list[ImageAnalysis] = Field(default_factory=list)
@@ -135,6 +165,7 @@ class PipelineState(BaseModel):
     selected_event_cluster: str = ""
     event_clusters: list[dict[str, Any]] = Field(default_factory=list)
     retrieval_context: dict[str, Any] = Field(default_factory=dict)
+    repair_context: dict[str, Any] = Field(default_factory=dict)
     storyboard: Storyboard | None = None
     composition_spec: CompositionSpec | None = None
     validation_result: ValidationResult | None = None

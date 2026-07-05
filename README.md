@@ -15,7 +15,10 @@ Local implementation of the FotoOwl take-home: a five-node, typed pipeline that 
 python -m unittest discover -s tests -v
 python -m app.main --source path\\to\\images --prompt "Cinematic wedding reel, slow and emotional, warm tones, minimal text"
 python -m app.main --source "https://drive.google.com/drive/folders/<folder_id>" --prompt "Upbeat birthday reel, fast cuts, bold captions, energetic"
+streamlit run ui/streamlit_app.py
 ```
+
+The UI accepts a public Google Drive folder link plus a prompt. Optional controls let you bias aspect ratio, target duration, style, transitions, animations, captions, music, and voice-over.
 
 ## Project Layout
 - `app/agents/` - pipeline node implementations
@@ -56,7 +59,7 @@ flowchart TD
 - Compile fixing: code-repair model
 - Judge test: separate judge-capable model
 
-The repo uses an offline-safe heuristic backend by default, but the service boundaries are explicit so real models can be wired in without changing the graph.
+The repo now uses real LangGraph orchestration and real Chroma-backed retrieval. If `OPENAI_API_KEY` is set, the AI service will call structured OpenAI models; otherwise it falls back to deterministic heuristics for offline testing.
 
 ## Retrieval Design
 - `style_guides` collection: one compact style card per style.
@@ -77,6 +80,12 @@ The repo uses an offline-safe heuristic backend by default, but the service boun
 ## Configuration
 - Copy `.env.example` to `.env` if you want to override defaults.
 - Tunables include model names, retry count, retrieval top-k, output size, and output paths.
+- For Gemini usage, set `GEMINI_API_KEY` and optionally `LLM_PROVIDER=gemini`.
+- The Gemini path is budget-aware:
+  - one batch vision call per run
+  - persistent response cache in `llm_cache/`
+  - small output caps on structured calls
+  - fallback to deterministic heuristics if the API is unavailable or rate-limited
 
 ## Testing
 - Tests are offline and use synthetic images and mocked behavior.
@@ -86,9 +95,10 @@ The repo uses an offline-safe heuristic backend by default, but the service boun
   - judge/coherence validation
 
 ## Known Limitations
-- The offline build uses a local graph executor and local vector retrieval rather than external LangGraph/Chroma packages.
 - Public Google Drive folder ingestion is best-effort and depends on the folder being publicly readable.
+- Video files in Drive folders are sampled into keyframes before analysis, because the core pipeline is still image-first.
 - The renderer is a functional local MP4 slideshow rather than a full Remotion render.
+- Chroma storage is recreated for each run to keep the test suite deterministic.
 
 ## Why This Architecture Works
 - It preserves the assignment's required five-agent shape.

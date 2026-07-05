@@ -1,21 +1,43 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 import re
 import sys
 
 import cv2
 import numpy as np
-from PIL import Image
 
-from app.models import ImageAnalysis, ImageRecord
+from app.models import ImageAnalysis, ImageRecord, VisionBatchResult, VisionSemanticAnalysis
+from app.settings import SETTINGS
+from app.services.llm_service import LLMService
+from app.services.prompt_loader import load_prompt
 from app.utils import clamp
 
 
 @dataclass
 class VisionService:
+    llm: LLMService = field(default_factory=LLMService)
+
+    def __post_init__(self) -> None:
+        self.prompt_vision: str = load_prompt("vision")
+
+    def analyze_batch(self, records: list[ImageRecord]) -> list[ImageAnalysis]:
+        if not records:
+            return []
+
+        local_items = [self._local_analysis(record) for record in records]
+        if not self.llm.available:
+            return local_items
+
+        semantic = self._semantic_batch(records)
+        semantic_by_id = {item.image_id: item for item in semantic.analyses} if semantic else {}
+        return [self._merge(local, semantic_by_id.get(local.image_id)) for local in local_items]
+
     def analyze(self, record: ImageRecord) -> ImageAnalysis:
+        return self.analyze_batch([record])[0]
+
+    def _local_analysis(self, record: ImageRecord) -> ImageAnalysis:
         path = Path(record.path)
         image = cv2.imread(str(path))
         if image is None:
@@ -50,7 +72,6 @@ class VisionService:
         palette_family = self._palette_family(image)
         people = self._person_estimate(str(path))
         image_summary = self._summary(record.image_id, people, emotion, indoor_outdoor, objects, palette_family)
-        # duplicate_score is 0.0 per-image; real dedup happens via perceptual hash in AIService._too_similar
         duplicate_score = 0.0
         confidence = clamp(0.6 + 0.2 * quality_score + 0.1 * aesthetic_score, 0.0, 1.0)
         rank_score = clamp(0.35 * quality_score + 0.25 * aesthetic_score + 0.2 * blur_norm + 0.2 * confidence, 0.0, 1.0)
@@ -72,6 +93,46 @@ class VisionService:
             confidence=confidence,
             rank_score=rank_score,
         )
+
+    def _semantic_batch(self, records: list[ImageRecord]) -> VisionBatchResult | None:
+        if not self.llm.available:
+            return None
+        ordered_ids = [record.image_id for record in records]
+        prompt = (
+            "Analyze the following event photos and return a JSON object with an analyses array.\n"
+            "Return one entry per image, in the same order as provided.\n"
+            "Keep the output concise and focused on reel selection signals.\n"
+            "For each item provide: image_id, image_summary, people, objects, event_type, emotion, "
+            "indoor_outdoor, aesthetic_score, duplicate_score, confidence.\n\n"
+            f"Image order: {', '.join(ordered_ids)}"
+        )
+        try:
+            return self.llm.generate_json(
+                model=SETTINGS.model_vision,
+                system_prompt=self.prompt_vision,
+                user_prompt=prompt,
+                response_model=VisionBatchResult,
+                temperature=SETTINGS.temperature,
+                image_paths=[record.path for record in records],
+                max_output_tokens=1200,
+            )
+        except Exception:
+            return None
+
+    def _merge(self, local: ImageAnalysis, semantic: VisionSemanticAnalysis | None) -> ImageAnalysis:
+        if semantic is None:
+            return local
+        local.image_summary = semantic.image_summary or local.image_summary
+        local.people = semantic.people if semantic.people is not None else local.people
+        local.objects = semantic.objects or local.objects
+        local.event_type = semantic.event_type or local.event_type
+        local.emotion = semantic.emotion or local.emotion
+        local.indoor_outdoor = semantic.indoor_outdoor or local.indoor_outdoor
+        local.aesthetic_score = semantic.aesthetic_score if semantic.aesthetic_score is not None else local.aesthetic_score
+        local.duplicate_score = semantic.duplicate_score if semantic.duplicate_score is not None else local.duplicate_score
+        local.confidence = semantic.confidence if semantic.confidence is not None else local.confidence
+        local.rank_score = clamp(0.35 * local.quality_score + 0.25 * local.aesthetic_score + 0.2 * (1.0 - local.duplicate_score) + 0.2 * local.confidence, 0.0, 1.0)
+        return local
 
     def _person_estimate(self, image_path: str) -> int:
         try:
@@ -100,7 +161,6 @@ class VisionService:
         return hints
 
     def _event_type_from_objects(self, objects: list[str]) -> str:
-        """Derive a single canonical event type from detected object hints."""
         priority = ["wedding", "party", "performance", "sport", "office"]
         for p in priority:
             if p in objects:
@@ -134,7 +194,6 @@ class VisionService:
         if g > r + 0.08 and g > b + 0.08:
             return "green"
         return "neutral"
-
 
     def _average_hash(self, gray: np.ndarray) -> str:
         resized = cv2.resize(gray, (8, 8), interpolation=cv2.INTER_AREA)

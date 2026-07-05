@@ -124,6 +124,28 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("coherence_score", result)
         self.assertGreaterEqual(result["coherence_score"], 0.6)
 
+    def test_llm_as_judge_mocked(self):
+        class FakeJudgeLLM:
+            available = True
+
+            def generate_json(self, *, model, system_prompt, user_prompt, response_model, temperature=0.0, image_paths=None):
+                self.last_model = model
+                self.last_prompt = user_prompt
+                return response_model(coherence_score=0.95, notes=["mocked structured judge"])
+
+        source_type, source_ref, images = self.adapter.load(str(self.image_dir))
+        state = run_pipeline(
+            source_type,
+            source_ref,
+            "Cinematic wedding reel, slow and emotional, warm tones, minimal text",
+            images,
+            output_root=self.tmp_path / "judge_mock",
+        )
+        ai = AIService(llm=FakeJudgeLLM())
+        result = ai.judge_storyboard(state.storyboard, "Cinematic wedding reel, slow and emotional, warm tones, minimal text")
+        self.assertGreaterEqual(result["coherence_score"], 0.9)
+        self.assertIn("mocked structured judge", result["notes"][0])
+
     def test_compile_retry_path(self):
         class RetryOnceCompiler:
             def __init__(self):
